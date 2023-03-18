@@ -1,4 +1,5 @@
 from .config import settings
+import datetime
 import logging
 import os
 import replicate
@@ -41,7 +42,11 @@ def call_api(
         height=settings["replicate.output.height"],
     )
     out = version.predict(**inputs)
-    dest = os.path.join(settings["output_dir"], f"{prompt_filename}.png")
+    now = datetime.datetime.now()
+    timestamp = now.strftime("%Y%m%d_%H%M%S")
+
+    filename = now.strftime("%Y-%m-%d_%H-%M-%S")
+    dest = os.path.join(settings["output_dir"], f"{timestamp}_{prompt_filename}.png")
     logger.info(
         f"model={model_name} version={model_version} inputs={inputs} dest={dest}"
     )
