@@ -1,4 +1,4 @@
 [Timer]
-OnCalendar=*:0/30:0
+OnCalendar=*:0/10:0
 Persistent=false
 AccuracySec=1s
