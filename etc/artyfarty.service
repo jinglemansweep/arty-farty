@@ -1,0 +1,12 @@
+[Unit]
+Description=Arty Farty Cloud AI Art Downloader
+
+[Service]
+WorkingDirectory=/opt/artyfarty
+ExecStart=/opt/artyfarty/venv/bin/python3 -m artyfarty
+Environment=PYTHONUNBUFFERED=1
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=default.target
