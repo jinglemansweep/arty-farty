@@ -33,7 +33,7 @@ def call_api(
     client = replicate.Client(api_token=settings["replicate_api_token"])
     model = client.models.get(model_name)
     version = model.versions.get(model_version)
-    prompt_full = f"{prompt_prefix}, {prompt}, {prompt_suffix}".strip()
+    prompt_full = f'{prompt_prefix} "{prompt}". {prompt_suffix}'.strip()
     prompt_filename = clean_prompt(prompt_full)
     inputs = dict(
         prompt=prompt_full,
@@ -44,8 +44,6 @@ def call_api(
     out = version.predict(**inputs)
     now = datetime.datetime.now()
     timestamp = now.strftime("%Y%m%d_%H%M%S")
-
-    filename = now.strftime("%Y-%m-%d_%H-%M-%S")
     dest = os.path.join(
         settings["output_dir"], f"artyfarty_{timestamp}_{prompt_filename}.png"
     )

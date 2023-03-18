@@ -15,11 +15,13 @@ logger.info(f"OPENWEBIF title={title} summary={summary}")
 
 prefixes = [
     "",
-    "In the style of Picasso",
-    "In the style of Tron",
-    "In the style of a Disney movie",
-    "In the styke of the Matrix",
 ]
-suffixes = ["output in mono", "output in sepia", "output in halftone effect"]
+suffixes = [
+    "Monochrome Output.",
+    "In style of Disney.",
+    "In style of Picasso.",
+    "In style of Tron",
+    "Set in the Future.",
+]
 
 call_api(summary, prefix=random.choice(prefixes), suffix=random.choice(suffixes))
