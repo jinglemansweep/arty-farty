@@ -3,6 +3,7 @@ import logging
 import os
 import replicate
 import requests
+from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -17,16 +18,21 @@ def fetch_file(url: str, dest: str):
     open(dest, "wb").write(r.content)
 
 
-def call_api(prompt: str = ""):
+def call_api(
+    prompt: str = "",
+    negative: Optional[str] = None,
+    prefix: Optional[str] = None,
+    suffix: Optional[str] = None,
+):
     model_name = settings["replicate.model"]
     model_version = settings["replicate.model_version"]
-    prompt_negative = settings["replicate.prompt_negative"]
-    prompt_prefix = settings["replicate.prompt_prefix"]
-    prompt_suffix = settings["replicate.prompt_suffix"]
+    prompt_negative = negative or settings["replicate.prompt_negative"]
+    prompt_prefix = prefix or settings["replicate.prompt_prefix"]
+    prompt_suffix = suffix or settings["replicate.prompt_suffix"]
     client = replicate.Client(api_token=settings["replicate_api_token"])
     model = client.models.get(model_name)
     version = model.versions.get(model_version)
-    prompt_full = f"{prompt_prefix} {prompt} {prompt_suffix}".strip()
+    prompt_full = f"{prompt_prefix}, {prompt}, {prompt_suffix}".strip()
     prompt_filename = clean_prompt(prompt_full)
     inputs = dict(
         prompt=prompt_full,
