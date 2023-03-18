@@ -46,7 +46,9 @@ def call_api(
     timestamp = now.strftime("%Y%m%d_%H%M%S")
 
     filename = now.strftime("%Y-%m-%d_%H-%M-%S")
-    dest = os.path.join(settings["output_dir"], f"{timestamp}_{prompt_filename}.png")
+    dest = os.path.join(
+        settings["output_dir"], f"artyfarty_{timestamp}_{prompt_filename}.png"
+    )
     logger.info(
         f"model={model_name} version={model_version} inputs={inputs} dest={dest}"
     )
