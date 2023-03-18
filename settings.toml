@@ -1,0 +1,21 @@
+output_dir = "output"
+
+
+[replicate]
+  model = "cloneofsimo/lora"
+  model_version = "fce477182f407ffd66b94b08e761424cabd13b82b518754b83080bc75ad32466"
+  prompt_prefix = ""
+  prompt_suffix = ""
+  prompt_negative = ""
+  [replicate.output]
+    width = 1024
+    height = 128
+  
+
+[inputs]
+  [inputs.openwebif]
+  url = "http://vuduo.home.ptre.es"
+
+  [inputs.a]
+  url = "http://beta"
+
