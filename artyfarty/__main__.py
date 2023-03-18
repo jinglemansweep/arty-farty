@@ -20,8 +20,11 @@ suffixes = [
     "Monochrome Output.",
     "In style of Disney.",
     "In style of Picasso.",
-    "In style of Tron",
+    "In style of Tron.",
     "Set in the Future.",
+    "In Pixel Art style.",
+    "In style of Hollywood billboard.",
+    "In style of fast food restaurant.",
 ]
 
 call_api(summary, prefix=random.choice(prefixes), suffix=random.choice(suffixes))
