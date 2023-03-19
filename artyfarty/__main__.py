@@ -27,4 +27,4 @@ suffixes = [
     "In style of fast food restaurant.",
 ]
 
-call_api(summary, prefix=random.choice(prefixes), suffix=random.choice(suffixes))
+call_api(title, prefix=random.choice(prefixes), suffix=random.choice(suffixes))
