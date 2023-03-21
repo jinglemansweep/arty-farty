@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "Arty Farty"
+name = "artyfarty"
 version = "0.1.0"
 description = "Cloud AI Art Generator"
 authors = ["Louis King <jinglemansweep@gmail.com>"]
