@@ -1,7 +1,5 @@
 [prompts]
-  prefixes = [
-    
-  ]
+  prefixes = []
   suffixes = [
     "in the style of Picasso",
     "in the style of Tron",
@@ -18,7 +16,7 @@
 
 [inputs]
   [inputs.openwebif]
-  url = "http://vuduo.home.ptre.es"
+  url = "http://vuduo.local"
 
 [replicate]
   model = "cloneofsimo/lora"

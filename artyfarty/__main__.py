@@ -23,10 +23,10 @@ epg_title, epg_summary = get_current_programme()
 model_name = settings.replicate.model
 model_version = settings.replicate.model_version
 
-prompt = "kitten. safe for work."  # title
-prefix = random.choice(settings.prompts.prefixes)
-suffix = random.choice(settings.prompts.suffixes)
-negative = settings.prompts.negative
+prompt = epg_title
+prefix = random.choice(settings.prompts.prefixes) if settings.prompts.prefixes else ""
+suffix = random.choice(settings.prompts.suffixes) if settings.prompts.suffixes else ""
+negative = settings.prompts.negative or ""
 prompt_full = f"{prefix} {prompt} {suffix}"
 
 model_inputs = dict(
