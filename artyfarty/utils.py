@@ -24,7 +24,9 @@ def get_file_extension(filename: str) -> str:
 
 
 def convert_safe_filename(input: str) -> str:
-    cleaned = "".join(char for char in input.lower() if char.isalnum() or char in [" "])
+    cleaned = "".join(
+        char for char in input.lower().strip() if char.isalnum() or char in [" "]
+    )
     return cleaned.replace(" ", "_")
 
 
