@@ -1,6 +1,8 @@
 output
 venv
+settings.toml
 __pycache__
 .env
 *.log
 .secrets.*
+
