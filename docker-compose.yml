@@ -1,0 +1,9 @@
+services:
+  artyfarty:
+    build:
+      context: .
+    volumes:
+      - ${PWD}/settings.toml:/opt/workspace/settings.toml:ro
+      - ${PWD}/.secrets.toml:/opt/workspace/.secrets.toml:ro
+    
+    
