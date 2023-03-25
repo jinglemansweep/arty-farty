@@ -2,6 +2,7 @@ services:
   artyfarty:
     build:
       context: .
+    restart: unless-stopped
     volumes:
       - ${PWD}/settings.toml:/opt/workspace/settings.toml:ro
       - ${PWD}/.secrets.toml:/opt/workspace/.secrets.toml:ro
