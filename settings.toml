@@ -12,7 +12,21 @@
     "in a wireframe model style",
     "in the style of Bollywood",
     "in neon colours",
-    "in halftone style"
+    "in halftone style",
+    "in dystopian future style",
+    "with random animals",
+    "in the style of a 1990s video game",
+    "in 3D raytraced style",
+    "set in America",
+    "set in Europe",
+    "using Rainbow colours",
+    "as a pencil sketch",
+    "as an oil painting",
+    "tiled and repeated",
+    "as Pokemon",
+    "as The Simpsons characters",
+    "set in Star Trek universe",
+    "Star Wars themed"
   ]
   negative = ""
 
@@ -28,6 +42,6 @@
     height = 128
   
 [output]
-  path = "output"
+  path = "/opt/wideboy/images/backgrounds"
   prefix = "artyfarty"
   timestamp = true
