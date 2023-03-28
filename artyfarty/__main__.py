@@ -1,11 +1,11 @@
 import logging
 import os
 import random
-from datetime import datetime
+import sys
 from pprint import pprint
 from .config import settings
 
-from .inputs.openwebif import get_current_programme
+from .inputs.openwebif import get_current_programme, FetchProgramException
 from .generators.replicate import generate_image
 from .utils import (
     build_output_filename,
@@ -18,25 +18,29 @@ logging.basicConfig(level=logging.DEBUG)
 
 logger = logging.getLogger(__name__)
 
-epg_title, epg_summary = get_current_programme()
-
-model_name = settings.replicate.model
-model_version = settings.replicate.model_version
-
-prompt = epg_title
-prefix = random.choice(settings.prompts.prefixes) if settings.prompts.prefixes else ""
-suffix = random.choice(settings.prompts.suffixes) if settings.prompts.suffixes else ""
-negative = settings.prompts.negative or ""
-prompt_full = f"{prefix} {prompt} {suffix}"
-
-model_inputs = dict(
-    prompt=prompt_full,
-    negative_prompt=negative,
-    width=settings["replicate.output.width"],
-    height=settings["replicate.output.height"],
-)
-
 try:
+    epg_title, epg_summary = get_current_programme()
+
+    model_name = settings.replicate.model
+    model_version = settings.replicate.model_version
+
+    prompt = epg_title
+    prefix = (
+        random.choice(settings.prompts.prefixes) if settings.prompts.prefixes else ""
+    )
+    suffix = (
+        random.choice(settings.prompts.suffixes) if settings.prompts.suffixes else ""
+    )
+    negative = settings.prompts.negative or ""
+    prompt_full = f"{prefix} {prompt} {suffix}"
+
+    model_inputs = dict(
+        prompt=prompt_full,
+        negative_prompt=negative,
+        width=settings["replicate.output.width"],
+        height=settings["replicate.output.height"],
+    )
+
     image_url = generate_image(model_name, model_version, model_inputs)
     file = build_output_filename(
         prompt_full, settings.output.timestamp, settings.output.prefix
@@ -52,3 +56,4 @@ try:
     write_metadata_file(metadata, metadata_filename)
 except Exception as e:
     logger.error("Error", exc_info=e)
+    sys.exit(2)

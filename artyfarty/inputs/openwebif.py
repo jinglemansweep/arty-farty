@@ -7,6 +7,10 @@ from ..config import settings
 logger = logging.getLogger(__name__)
 
 
+class FetchProgramException(Exception):
+    pass
+
+
 def get_current_programme():
     url = settings["inputs.openwebif.url"]
     service_ref = _get_service(url)
